@@ -216,7 +216,7 @@ mkdir -p outputs/$PACKAGE
 # Generate PDF manual
 R CMD Rd2pdf --no-preview --title="Package: $PACKAGE (via r-universe)" --output=outputs/$PACKAGE/manual.pdf "$PKGDIR" 2> stderr_manual.txt || MANUAL_FAILURE=1
 if [ "$MANUAL_FAILURE" ]; then
-# Try again with xelatex to support weird fonts: https://github.com/r-universe-org/help/issues/336
+# Try again with xelatex to support weird fonts: https://github.com/tempbioc/help/issues/336
 echo "Failed to build pdfmanual with pdflatex. Trying again with xelatex..."
 unset MANUAL_FAILURE
 PDFLATEX=tinyxelatex R CMD Rd2pdf --no-preview --title="Package: $PACKAGE (via r-universe)" --output=outputs/$PACKAGE/manual.pdf "$PKGDIR" 2> stderr_manual.txt || MANUAL_FAILURE=1
